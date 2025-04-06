@@ -1,7 +1,6 @@
 import React, { useCallback, useEffect, useState } from 'react'
 import Quill from 'quill'
 import 'quill/dist/quill.snow.css';
-require('dotenv').config();
 import { io } from "socket.io-client"
 import { useParams } from "react-router-dom"
 
@@ -26,7 +25,7 @@ function TextEditor() {
     console.log(documentId)
 
     useEffect(() => {
-        const s = io(process.env.BACKEND_URL)
+        const s = io(import.meta.env.BACKEND_URL)
         setSocket(s)
 
         return () => {
